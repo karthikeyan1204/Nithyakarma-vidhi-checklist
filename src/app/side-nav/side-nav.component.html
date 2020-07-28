@@ -1,0 +1,52 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <button class="next-menu" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span class="next-logo-text">Nithyakarma Vidhi</span>
+        <ul class="nav navbar-nav float-right">
+            <li class="nav-item">
+                <a class="nav-link">
+                    <i class="ficon feather icon-bell"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <i class="ficon feather icon-help-circle"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="next-avatar">
+                    <div class="user-nav">
+                        <span class="user-name">user 1</span>
+                    </div>
+                    <span>
+                        <img class="avatar-round" alt="avatar" height="30" width="30" mat-button [matMenuTriggerFor]="menu"
+                            src="/assets/img/defaultprofile.png">
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <mat-menu #menu="matMenu" class="menu">
+            <button mat-menu-item routerLink="/portal/profile/640392054"><i class="ficon feather icon-user" id="side-icon"></i>Profile</button>
+            <button mat-menu-item><i class="ficon feather icon-log-out" id="side-icon"></i>Logout</button>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="example-container next-sidenav">
+    <mat-sidenav id="slim-sidenav" #drawer [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="sidenavopened ? 'false' : 'true'" role="navigation">
+        <mat-nav-list>
+            <a mat-list-item routerLink='/checklist' (click)="onResize()" routerLinkActive='active'>
+                <!-- <i class="feather icon-user"></i> -->
+                <span>Task List</span>
+            </a>
+        </mat-nav-list>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content-area-wrapper">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

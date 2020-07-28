@@ -1,8 +1,21 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule, Component } from '@angular/core';
+import { Routes, RouterModule, ChildActivationEnd } from '@angular/router';
+import{SideNavComponent} from './side-nav/side-nav.component';
+import {TaskListComponent} from './task-list/task-list.component';
+ 
+const routes: Routes = [
+  {
+    path:"",
+    component:SideNavComponent,
+    children:[
+      {
+      path:"checklist",
+      Component:TaskListComponent
+      }
+    ]
 
-
-const routes: Routes = [];
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
